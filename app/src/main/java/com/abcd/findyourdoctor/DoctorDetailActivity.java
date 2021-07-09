@@ -66,7 +66,7 @@ public class DoctorDetailActivity extends AppCompatActivity {
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+        
             }
         });
 
