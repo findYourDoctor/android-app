@@ -1,0 +1,25 @@
+{
+  "id": "userId",
+  "name": "Dr Dummy",
+  "speciality": "speciality",
+  "experience": "experience",
+  "profile_pic": "https://picsum.photos/200/300",
+  "education": [
+    {
+      "education_name": "mbbs",
+      "passing_year": "2003",
+      "institute": "college name"
+    },
+    {
+      "education_name": "mbbs",
+      "passing_year": "2003",
+      "institute": "college name"
+    },
+    {
+      "education_name": "mbbs",
+      "passing_year": "2003",
+      "institute": "college name"
+    }
+  ],
+  "languages": "Hindi, english"
+}

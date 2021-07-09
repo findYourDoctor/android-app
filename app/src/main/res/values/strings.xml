@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">FindYourDoctor</string>
+    <string name="_6207484240">6207484240</string>
+    <string name="login">login</string>
+    <string name="otp">OTP</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="textview">TextView</string>
+    <string name="dr_dummy">Dr. Dummy</string>
+    <string name="genral_physician">Genral physician</string>
+    <string name="_15_years_exp">15 years exp</string>
+    <string name="book_your_slot">Book your slot</string>
+    <string name="i_can_speak_english_hindi">I can speak: English, Hindi</string>
+</resources>
