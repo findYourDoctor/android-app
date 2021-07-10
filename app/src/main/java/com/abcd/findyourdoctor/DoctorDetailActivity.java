@@ -2,6 +2,7 @@ package com.abcd.findyourdoctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.abcd.findyourdoctor.doctor.entity.DoctorDetailData;
+import com.abcd.findyourdoctor.messaging.ui.ChatActivity;
 import com.abcd.findyourdoctor.serverrequest.MockRepository;
 import com.squareup.picasso.Picasso;
 
@@ -66,7 +68,7 @@ public class DoctorDetailActivity extends AppCompatActivity {
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(DoctorDetailActivity.this, ChatActivity.class));
             }
         });
 

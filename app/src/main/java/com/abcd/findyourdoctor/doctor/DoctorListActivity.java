@@ -37,7 +37,14 @@ public class DoctorListActivity extends AppCompatActivity {
     private void getDoctorList() {
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
-        database.child("users").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        /*DoctorData doctorData = new DoctorData();
+        doctorData.setName("Doctor Dummy 1");
+        doctorData.setRatings("4.5");
+        doctorData.setSpeciality("Physician");
+        Long timeStamp = System.currentTimeMillis();
+        database.child("doctor").child(String.valueOf(timeStamp)).setValue(doctorData);*/
+
+        database.child("doctor").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {

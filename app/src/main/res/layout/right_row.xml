@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
-            android:text="Hello!!" />
+            android:text="Hi Doctor. I need to consult you regarding my health" />
 
         <TextView
             android:id="@+id/timeUser"
