@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "593265228753",
+    "project_id": "findyourdoctor-ee6ad",
+    "storage_bucket": "findyourdoctor-ee6ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593265228753:android:4887eb80d65fc762d33ef0",
+        "android_client_info": {
+          "package_name": "com.abcd.findyourdoctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593265228753-nn3ppnbnnq4g7c9v6etpf17bi28a9nd9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVeVGCuB3ray15heVQCxeBRjnp-g3-00c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593265228753-nn3ppnbnnq4g7c9v6etpf17bi28a9nd9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
