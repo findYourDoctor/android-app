@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DoctorDetails"></activity>
+        <activity
+            android:name=".messaging.ui.ChatActivity"
+            android:exported="true" />
+        <activity android:name=".DoctorDetails" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RecyclerActivity" />
         <activity android:name=".DoctorDetailActivity" />
