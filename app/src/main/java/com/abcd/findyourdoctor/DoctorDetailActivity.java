@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.abcd.findyourdoctor.doctor.entity.DoctorData;
 import com.abcd.findyourdoctor.doctor.entity.DoctorDetailData;
 import com.abcd.findyourdoctor.messaging.ui.ChatActivity;
 import com.abcd.findyourdoctor.serverrequest.MockRepository;
@@ -24,6 +25,7 @@ public class DoctorDetailActivity extends AppCompatActivity {
     private ImageView imgSymbol;
     private Button btnChat;
     private Button btnBookSlot;
+    private DoctorData doctorData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class DoctorDetailActivity extends AppCompatActivity {
         initialiseView();
         setData();
         setOnClickListener();
+        if (getIntent().getExtras() != null) {
+            doctorData = getIntent().getParcelableExtra(DoctorConstants.Companion.getDOCTOR_DATA());
+        }
     }
 
     private void initialiseView() {
@@ -68,7 +73,9 @@ public class DoctorDetailActivity extends AppCompatActivity {
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DoctorDetailActivity.this, ChatActivity.class));
+                Intent intent = new Intent(DoctorDetailActivity.this, ChatActivity.class);
+                intent.putExtra(DoctorConstants.Companion.getDOCTOR_DATA(), doctorData);
+                startActivity(intent);
             }
         });
 

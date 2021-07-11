@@ -19,15 +19,15 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
-            android:text="Hi Doctor. I need to consult you regarding my health" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/timeUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp"
             android:text="9:20PM"
             android:textSize="11sp" />
 

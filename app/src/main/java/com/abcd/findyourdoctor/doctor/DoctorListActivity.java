@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.abcd.findyourdoctor.BaseActivity;
 import com.abcd.findyourdoctor.R;
 import com.abcd.findyourdoctor.doctor.entity.DoctorData;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,11 +23,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
-public class DoctorListActivity extends AppCompatActivity {
+public class DoctorListActivity extends BaseActivity {
 
     private List<DoctorData> doctorDataList = new ArrayList<>();
     private RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,8 @@ public class DoctorListActivity extends AppCompatActivity {
     }
 
     private void getDoctorList() {
+
+        showProgressDialog();
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
         /*DoctorData doctorData = new DoctorData();
@@ -47,21 +53,21 @@ public class DoctorListActivity extends AppCompatActivity {
         database.child("doctor").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
+                hideProgressDialog();
                 if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
+                    Toast.makeText(DoctorListActivity.this, "Error getting data, " + task.getException(), Toast.LENGTH_SHORT).show();
+                } else {
 
                     for (DataSnapshot user : task.getResult().getChildren()) {
-                        Log.d("", "");
                         DoctorData data = user.getValue(DoctorData.class);
+                        Objects.requireNonNull(data).setId(user.getKey());
                         doctorDataList.add(data);
                     }
 
-                        DoctorListAdapter doctorListAdapter = new DoctorListAdapter(doctorDataList);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(DoctorListActivity.this, LinearLayoutManager.VERTICAL, false));
-                        recyclerView.setAdapter(doctorListAdapter);
-                    }
+                    DoctorListAdapter doctorListAdapter = new DoctorListAdapter(doctorDataList);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(DoctorListActivity.this, LinearLayoutManager.VERTICAL, false));
+                    recyclerView.setAdapter(doctorListAdapter);
+                }
 
             }
         });

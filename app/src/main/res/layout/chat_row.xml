@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     android:layout_height="wrap_content">
 
-    <include layout="@layout/left_row"/>
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/chat_edit_text_bg"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Today"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:visibility="visible" />
 
-    <include layout="@layout/right_row" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
-</RelativeLayout>
+        <include layout="@layout/left_row" />
+
+        <include layout="@layout/right_row" />
+
+    </RelativeLayout>
+</LinearLayout>

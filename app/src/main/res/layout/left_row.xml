@@ -3,18 +3,18 @@
     android:id="@+id/layoutLeft"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/chat_incoming"
     android:layout_margin="10dp"
-    android:padding="10dp"
-    android:orientation="vertical">
+    android:background="@drawable/chat_incoming"
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/senderMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:text="Hello!! Welcome to FindYouroctor app. How can I help you" />
+        android:textSize="16sp"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:id="@+id/timeSender"
@@ -22,7 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:textSize="10sp"
-        android:text="9:20PM" />
+        android:textSize="11sp" />
 
 </LinearLayout>

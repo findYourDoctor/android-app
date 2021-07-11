@@ -8,13 +8,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.abcd.findyourdoctor.R
 import com.abcd.findyourdoctor.messaging.entity.ChatData
+import com.abcd.findyourdoctor.util.TimeUtil
 
-class ChatAdapter(private val chatList : ArrayList<ChatData>) :
+class ChatAdapter(private val chatList: ArrayList<ChatData>, private val userId : String
+) :
     RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
-    private val userId : String = ""
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         var textChatSender : TextView
         var textChatUser : TextView
+        var txtDate : TextView
         var textTimeSender : TextView
         var textTimeUser : TextView
         var layoutLeft : LinearLayout
@@ -27,6 +29,7 @@ class ChatAdapter(private val chatList : ArrayList<ChatData>) :
             textTimeUser = view.findViewById(R.id.timeUser)
             layoutLeft = view.findViewById(R.id.layoutLeft)
             layoutRight = view.findViewById(R.id.layoutRight)
+            txtDate = view.findViewById(R.id.txtDate)
         }
     }
 
@@ -38,22 +41,35 @@ class ChatAdapter(private val chatList : ArrayList<ChatData>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (position % 2 == 0/*chatList[position].senderId == userId*/) {
-            holder.layoutLeft.visibility = View.VISIBLE
-            holder.layoutRight.visibility = View.GONE
-
-//            holder.textChatUser.text = chatList[position].message
-//            holder.textTimeUser.text = chatList[position].timestamp
-        } else {
+        when {
+            position == 0 -> {
+                holder.txtDate.visibility = View.VISIBLE
+                holder.txtDate.text = TimeUtil.getFormattedDate(holder.textTimeUser.context, chatList[position].timestamp)
+            }
+            TimeUtil.getFormattedDate(holder.textTimeUser.context, chatList[position - 1].timestamp).equals(TimeUtil.getFormattedDate(holder.textTimeUser.context, chatList[position].timestamp)) -> {
+                holder.txtDate.visibility = View.GONE
+            }
+            else -> {
+                holder.txtDate.visibility = View.VISIBLE
+                holder.txtDate.text = TimeUtil.getFormattedDate(holder.textTimeUser.context, chatList[position].timestamp)
+            }
+        }
+        if (chatList[position].senderId == userId) {
             holder.layoutLeft.visibility = View.GONE
             holder.layoutRight.visibility = View.VISIBLE
 
-//            holder.textChatSender.text = chatList[position].message
-//            holder.textTimeUser.text = chatList[position].timestamp
+            holder.textChatUser.text = chatList[position].message
+            holder.textTimeUser.text = TimeUtil.getTimeFromTimeStamp(holder.textTimeUser.context, chatList[position].timestamp)
+        } else {
+            holder.layoutLeft.visibility = View.VISIBLE
+            holder.layoutRight.visibility = View.GONE
+
+            holder.textChatSender.text = chatList[position].message
+            holder.textTimeSender.text = TimeUtil.getTimeFromTimeStamp(holder.textTimeUser.context, chatList[position].timestamp)
         }
     }
 
     override fun getItemCount(): Int {
-        return /*chatList.size*/15
+        return chatList.size
     }
 }
