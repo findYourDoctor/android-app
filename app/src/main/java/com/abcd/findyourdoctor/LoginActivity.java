@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 import java.util.List;
 
-public class DashBoardActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private Button submit;
 
     FirebaseAuth mFirebaseAuth;
@@ -44,7 +44,7 @@ public class DashBoardActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1=new Intent(DashBoardActivity.this,DoctorDetailActivity.class);
+                Intent intent1=new Intent(LoginActivity.this,DoctorDetailActivity.class);
                 startActivity(intent1);
             }
         });

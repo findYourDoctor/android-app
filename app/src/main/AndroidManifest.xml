@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".dashboard.DashboardActivity"
+            android:exported="true"
+            android:label="@string/title_activity_dashboard" />
+        <activity
             android:name=".BaseActivity"
             android:exported="true" />
         <activity
@@ -17,9 +21,9 @@
             android:exported="true" />
         <activity
             android:name=".messaging.ui.ChatActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true" />
-        <activity android:name=".DashBoardActivity" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".DoctorDetailActivity" />
         <activity
             android:name=".SplashActivity"

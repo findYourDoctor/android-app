@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.abcd.findyourdoctor.BaseActivity
 import com.abcd.findyourdoctor.DoctorConstants
 import com.abcd.findyourdoctor.R
+import com.abcd.findyourdoctor.dashboard.ui.notifications.ActiveChatData
 import com.abcd.findyourdoctor.doctor.entity.DoctorData
 import com.abcd.findyourdoctor.messaging.ChatAdapter
 import com.abcd.findyourdoctor.messaging.ChatViewModel
@@ -87,6 +88,13 @@ class ChatFragment : Fragment() {
         chatData.senderId = (activity as BaseActivity).getUserId()
         chatData.timestamp = System.currentTimeMillis()
         database.child("messages").child(chatId).push().setValue(chatData)
+        updateActiveUsers(message)
+    }
+
+    private fun updateActiveUsers(message: String) {
+        val members = arrayListOf<String>((activity as BaseActivity).getUserId(), doctorData.id)
+        val chatData = ActiveChatData(message = message, timestamp = System.currentTimeMillis(), members = members)
+        database.child("activeUsers").child("users").push().setValue(chatData)
     }
 
     private fun checkIfNodeExists() {
