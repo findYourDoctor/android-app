@@ -1,73 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/card_view"
+
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_margin="10dp"
         android:padding="10dp"
+        app:cardCornerRadius="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/CardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="50dp">
-
-            <ImageView
-                android:id="@+id/roundImg"
-                android:layout_width="104dp"
-                android:layout_height="122dp"
-                android:contentDescription="@string/todo"
-                android:scaleType="centerCrop" />
-
-        </androidx.cardview.widget.CardView>
-
         <LinearLayout
-            android:layout_width="279dp"
-            android:layout_height="121dp"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:layout_width="394dp"
+            android:layout_height="210dp"
 
-            <TextView
-                android:id="@+id/txtName"
-                android:layout_width="267dp"
-                android:layout_height="44dp"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtDepartment"
-                android:layout_width="269dp"
-                android:layout_height="32dp" />
 
-            <TextView
-                android:id="@+id/txtStatus"
-                android:layout_width="269dp"
-                android:layout_height="32dp" />
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/CardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="50dp">
+
+                    <ImageView
+                        android:id="@+id/roundImg"
+                        android:layout_width="104dp"
+                        android:layout_height="122dp"
+
+                        android:scaleType="centerCrop" />
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="279dp"
+                    android:layout_height="121dp"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/txtName"
+                        android:layout_width="267dp"
+                        android:layout_height="44dp"
+                        android:text="Charu"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtDepartment"
+                        android:layout_width="269dp"
+                        android:layout_height="32dp"
+                        android:text="Physician" />
+
+                    <TextView
+                        android:id="@+id/txtStatus"
+                        android:layout_width="269dp"
+                        android:layout_height="32dp"
+                        android:text="online" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_marginBottom="516dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.238"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/txtExp"
+                    android:layout_width="127dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="18 years Exp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txtLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:gravity="center"
+                    android:text="12354"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/img_thumbUp"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+
+
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/thumb_up" />
+
+
+                <Button
+                    android:id="@+id/Chat_Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+
+                    android:text="@string/chat_now" />
+            </LinearLayout>
 
 
         </LinearLayout>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/Chat_Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chat Now"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.226" />
-
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
