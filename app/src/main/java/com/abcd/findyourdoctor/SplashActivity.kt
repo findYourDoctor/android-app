@@ -8,21 +8,19 @@ import android.os.Looper
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.abcd.findyourdoctor.dashboard.DashboardActivity
 import com.abcd.findyourdoctor.doctor.DoctorListActivity
 import com.abcd.findyourdoctor.messaging.ui.ChatActivity
+import com.abcd.findyourdoctor.util.SharedPreferenceUtil
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        val sharedPref = getSharedPreferences("shared", Context.MODE_PRIVATE)
-        val isUserIdSaved: Boolean = sharedPref.getLong("userId", 0) > 0
+        val isUserIdSaved: Boolean = SharedPreferenceUtil.getLongPreferences(this, "userId", 0) > 0
         if (!isUserIdSaved) {
-            with(sharedPref.edit()) {
-                putLong("userId", System.currentTimeMillis())
-                apply()
-            }
+            SharedPreferenceUtil.setLongPreferences(this, "userId", 1625952788444)
             startHandler()
         } else {
             startHandler()
@@ -34,7 +32,7 @@ class SplashActivity : AppCompatActivity() {
             startActivity(
                 Intent(
                     this@SplashActivity,
-                    DoctorListActivity
+                    DashboardActivity
                     ::class.java
                 )
             )

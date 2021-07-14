@@ -7,18 +7,25 @@
         <entry key="app/src/main/res/drawable/chat_edit_text_bg.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/chat_incoming.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/chat_outgoing.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/circle_drawable.xml" value="0.178125" />
         <entry key="app/src/main/res/drawable/ic_chat.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/active_chat_adapter.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_base.xml" value="0.7016129032258065" />
         <entry key="app/src/main/res/layout/activity_base_actitvity.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.31715575620767494" />
+        <entry key="app/src/main/res/layout/activity_doctor_chat.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_doctor_details.xml" value="0.16197916666666667" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.33" />
         <entry key="app/src/main/res/layout/blank_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/chat_activity.xml" value="0.1" />
         <entry key="app/src/main/res/layout/chat_row.xml" value="0.2" />
         <entry key="app/src/main/res/layout/doctor_list_row.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.16197916666666667" />
+        <entry key="app/src/main/res/layout/empty_chat_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.16197916666666667" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_doctor_chat.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.16197916666666667" />
         <entry key="app/src/main/res/layout/left_row.xml" value="0.40404040404040403" />
         <entry key="app/src/main/res/layout/message_fragment.xml" value="0.25588235294117645" />

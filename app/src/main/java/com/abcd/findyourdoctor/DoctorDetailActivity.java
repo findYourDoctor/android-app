@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.abcd.findyourdoctor.doctor.entity.DoctorData;
 import com.abcd.findyourdoctor.doctor.entity.DoctorDetailData;
+import com.abcd.findyourdoctor.messaging.entity.SecondUserData;
 import com.abcd.findyourdoctor.messaging.ui.ChatActivity;
 import com.abcd.findyourdoctor.serverrequest.MockRepository;
 import com.squareup.picasso.Picasso;
@@ -73,8 +74,12 @@ public class DoctorDetailActivity extends AppCompatActivity {
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SecondUserData secondUserData = new SecondUserData();
+                secondUserData.setId(doctorData.getId());
+                secondUserData.setName(doctorData.getName());
+                secondUserData.setImageUrl("");
                 Intent intent = new Intent(DoctorDetailActivity.this, ChatActivity.class);
-                intent.putExtra(DoctorConstants.Companion.getDOCTOR_DATA(), doctorData);
+                intent.putExtra(DoctorConstants.Companion.getDOCTOR_DATA(), secondUserData);
                 startActivity(intent);
             }
         });

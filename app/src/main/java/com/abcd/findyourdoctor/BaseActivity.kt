@@ -10,6 +10,7 @@ import android.R
 import android.util.Log
 
 import androidx.annotation.NonNull
+import com.abcd.findyourdoctor.util.SharedPreferenceUtil
 
 import com.google.android.gms.tasks.OnCompleteListener
 
@@ -36,8 +37,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun getChatId(receiverId : String) : String {
-        val sharedPref = getSharedPreferences("shared", Context.MODE_PRIVATE)
-        val userId = sharedPref.getLong("userId", 0)
+        val userId = SharedPreferenceUtil.getLongPreferences(this, "userId", 0)
         return if (userId > receiverId.toLong()) {
             (userId.toString() + receiverId)
         } else {
@@ -46,8 +46,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun getUserId(): String {
-        val sharedPref = getSharedPreferences("shared", Context.MODE_PRIVATE)
-        return sharedPref.getLong("userId", 0).toString()
+        return SharedPreferenceUtil.getLongPreferences(this, "userId", 0).toString()
     }
 
     fun getFirebaseToken() {

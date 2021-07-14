@@ -2,6 +2,8 @@ package com.abcd.findyourdoctor.messaging.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -22,10 +24,11 @@ import com.abcd.findyourdoctor.doctor.entity.DoctorData
 import com.abcd.findyourdoctor.messaging.ChatAdapter
 import com.abcd.findyourdoctor.messaging.ChatViewModel
 import com.abcd.findyourdoctor.messaging.entity.ChatData
+import com.abcd.findyourdoctor.messaging.entity.SecondUserData
 import com.abcd.findyourdoctor.util.MyScrollToBottomObserver
+import com.abcd.findyourdoctor.util.SharedPreferenceUtil
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
-import java.util.*
+import kotlin.NoSuchElementException
 import kotlin.collections.ArrayList
 
 
@@ -35,17 +38,16 @@ class ChatFragment : Fragment() {
     private lateinit var chatRecycler: RecyclerView
     private lateinit var imgSend: ImageView
     private lateinit var editChat: EditText
-    private lateinit var doctorData: DoctorData
-    private var chatNodeExist :Boolean = false
+    private lateinit var secondUserData: SecondUserData
     private lateinit var chatId : String
     private val database = FirebaseDatabase.getInstance().reference
     private var chatList : ArrayList<ChatData> = ArrayList()
     private lateinit var adapter : ChatAdapter
 
     companion object {
-        fun newInstance(doctorData: DoctorData) = ChatFragment().apply {
+        fun newInstance(userData: SecondUserData) = ChatFragment().apply {
             arguments = Bundle().apply {
-                putParcelable(DoctorConstants.DOCTOR_DATA, doctorData)
+                putParcelable(DoctorConstants.DOCTOR_DATA, userData)
             }
         }
     }
@@ -63,8 +65,7 @@ class ChatFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ChatViewModel::class.java)
 
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
-        userId = sharedPref?.getLong("userId", 0)
+        userId = SharedPreferenceUtil.getLongPreferences(activity, "userId", 0)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -74,7 +75,7 @@ class ChatFragment : Fragment() {
         imgSend = view.findViewById(R.id.imgSend)
         chatTextWatcher()
 
-        checkIfNodeExists()
+        startObservingForMessages()
         imgSend.setOnClickListener {
             send(editChat.text.toString())
             editChat.text.clear()
@@ -88,44 +89,55 @@ class ChatFragment : Fragment() {
         chatData.senderId = (activity as BaseActivity).getUserId()
         chatData.timestamp = System.currentTimeMillis()
         database.child("messages").child(chatId).push().setValue(chatData)
-        updateActiveUsers(message)
     }
 
-    private fun updateActiveUsers(message: String) {
-        val members = arrayListOf<String>((activity as BaseActivity).getUserId(), doctorData.id)
-        val chatData = ActiveChatData(message = message, timestamp = System.currentTimeMillis(), members = members)
-        database.child("activeUsers").child("users").push().setValue(chatData)
+    private fun updateActiveUsers(message: String, timestamp: Long) {
+        val chatDataUser1 = ActiveChatData(
+            message = message,
+            timestamp = timestamp,
+            userId = secondUserData.id!!,
+            imageUrl = "",
+            name = secondUserData.name!!
+        )
+
+        val chatDataUser2 = ActiveChatData(
+            message = message,
+            timestamp = timestamp,
+            userId = userId.toString(),
+            imageUrl = "",
+            name = secondUserData.name!!
+        )
+        database.child("activeChats").child(userId.toString()).child(chatId).setValue(chatDataUser1)
+        database.child("activeChats").child(secondUserData.id!!).child(chatId).setValue(chatDataUser2)
     }
 
-    private fun checkIfNodeExists() {
+    private fun startObservingForMessages() {
+        database.child("messages").child(chatId).addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val data = snapshot.children
+                try {
+                    val messageObj = data.last().getValue(ChatData::class.java)
+                    if (messageObj != null) {
+                        Handler(Looper.getMainLooper()).post(Runnable {
+                            updateActiveUsers(messageObj.message, messageObj.timestamp)
+                        })
 
-//        val messageListener = object : ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                database.child("messages").child(chatId).get().addOnSuccessListener {
-//                    Log.i("firebase", "Got value ${it.value}")
-//                    if (it.value != null) {
-//                        setRecyclerAdapter(it)
-//                    }
-//
-//                }.addOnFailureListener{
-//                    Log.e("firebase", "Error getting data", it)
-//                }
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.e("firebase", "Error getting data"+ error.message)
-//            }
-//
-//        }
-//        database.child("messages").addListenerForSingleValueEvent(messageListener)
+                    }
+                } catch (ex : NoSuchElementException) {
+                    Log.e("", "")
+                }
 
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("", "")
+            }
+
+        })
         database.child("messages").child(chatId).addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 Log.i("firebase", "Got value ${snapshot.value}")
                 val data = snapshot.getValue(ChatData::class.java)
-//                snapshot.key?.let {
-//                    database.child("messages").child(chatId).child(it).child("timestamp").setValue(ServerValue.TIMESTAMP)
-//                }
                 chatList.add(data!!)
                 adapter.notifyItemInserted(chatList.size - 1)
             }
@@ -190,9 +202,11 @@ class ChatFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        arguments?.getParcelable<DoctorData>(DoctorConstants.DOCTOR_DATA)?.let {
-            doctorData = it
-            chatId = (activity as BaseActivity).getChatId(doctorData.id)
+        arguments?.getParcelable<SecondUserData>(DoctorConstants.DOCTOR_DATA)?.let {
+            secondUserData = it
+            if (secondUserData.id != null) {
+                chatId = (activity as BaseActivity).getChatId(secondUserData.id!!)
+            }
         }
     }
 
