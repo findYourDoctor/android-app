@@ -1,76 +1,43 @@
-package com.abcd.findyourdoctor.messaging.entity;
+package com.abcd.findyourdoctor.messaging.entity
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import android.os.Parcel
+import android.os.Parcelable
 
-public class SecondUserData implements Parcelable {
-    private String name;
-    private String id;
-    private String imageUrl;
-    private long timestamp;
+open class SecondUserData : Parcelable {
+    var name: String? = null
+    var id: String? = null
+    var imageUrl: String? = null
+    var timestamp: Long = 0
 
-    public SecondUserData() {}
-    protected SecondUserData(Parcel in) {
-        name = in.readString();
-        id = in.readString();
-        imageUrl = in.readString();
-        timestamp = in.readLong();
+    constructor()
+    protected constructor(`in`: Parcel) {
+        name = `in`.readString()
+        id = `in`.readString()
+        imageUrl = `in`.readString()
+        timestamp = `in`.readLong()
     }
 
-    public static final Creator<SecondUserData> CREATOR = new Creator<SecondUserData>() {
-        @Override
-        public SecondUserData createFromParcel(Parcel in) {
-            return new SecondUserData(in);
-        }
-
-        @Override
-        public SecondUserData[] newArray(int size) {
-            return new SecondUserData[size];
-        }
-    };
-
-    public String getName() {
-        return name;
+    override fun describeContents(): Int {
+        return 0
     }
 
-    public void setName(String name) {
-        this.name = name;
+    override fun writeToParcel(dest: Parcel, flags: Int) {
+        dest.writeString(name)
+        dest.writeString(id)
+        dest.writeString(imageUrl)
+        dest.writeLong(timestamp)
     }
 
-    public String getId() {
-        return id;
-    }
+    companion object {
+        val CREATOR: Parcelable.Creator<SecondUserData?> =
+            object : Parcelable.Creator<SecondUserData?> {
+                override fun createFromParcel(`in`: Parcel): SecondUserData? {
+                    return SecondUserData(`in`)
+                }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(id);
-        dest.writeString(imageUrl);
-        dest.writeLong(timestamp);
+                override fun newArray(size: Int): Array<SecondUserData?> {
+                    return arrayOfNulls(size)
+                }
+            }
     }
 }
