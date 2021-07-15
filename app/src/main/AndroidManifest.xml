@@ -32,6 +32,18 @@
         <activity
             android:name=".SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
+            android:name=".DashBoard_Activity"
+            android:label="@string/title_activity_dash_board_"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Book_slot" />
+        <activity android:name=".right_row" />
+        <activity android:name=".DoctorDetails" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".RecyclerActivity" />
+        <activity android:name=".DoctorDetailActivity" />
+
+        <activity android:name=".doctor.DoctorListActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

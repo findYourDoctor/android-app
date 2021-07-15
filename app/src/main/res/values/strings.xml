@@ -36,4 +36,7 @@
     <string name="title_chat">Messages</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
+    <string name="chat_now">Chat Now</string>
+    <string name="_12323454">12323454</string>
 </resources>
