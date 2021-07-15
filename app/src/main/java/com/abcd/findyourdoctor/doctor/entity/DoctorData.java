@@ -1,10 +1,37 @@
 package com.abcd.findyourdoctor.doctor.entity;
 
-public class DoctorData {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class DoctorData implements Parcelable {
     private String name;
     private String speciality;
     private boolean isOnline;
     private String ratings;
+    private String id;
+
+    public DoctorData() {
+
+    }
+    protected DoctorData(Parcel in) {
+        name = in.readString();
+        speciality = in.readString();
+        isOnline = in.readByte() != 0;
+        ratings = in.readString();
+        id = in.readString();
+    }
+
+    public static final Creator<DoctorData> CREATOR = new Creator<DoctorData>() {
+        @Override
+        public DoctorData createFromParcel(Parcel in) {
+            return new DoctorData(in);
+        }
+
+        @Override
+        public DoctorData[] newArray(int size) {
+            return new DoctorData[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -36,5 +63,27 @@ public class DoctorData {
 
     public void setRatings(String ratings) {
         this.ratings = ratings;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(speciality);
+        dest.writeByte((byte) (isOnline ? 1 : 0));
+        dest.writeString(ratings);
+        dest.writeString(id);
     }
 }

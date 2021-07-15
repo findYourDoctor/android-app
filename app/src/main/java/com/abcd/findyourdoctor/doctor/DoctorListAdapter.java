@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.abcd.findyourdoctor.DoctorConstants;
 import com.abcd.findyourdoctor.DoctorDetailActivity;
 import com.abcd.findyourdoctor.R;
 import com.abcd.findyourdoctor.doctor.entity.DoctorData;
@@ -60,6 +61,7 @@ public class DoctorListAdapter extends RecyclerView.Adapter<DoctorListAdapter.Vi
 
             view.setOnClickListener(view1 -> {
                 Intent intent = new Intent(view.getContext(), DoctorDetailActivity.class);
+                intent.putExtra(DoctorConstants.Companion.getDOCTOR_DATA(), doctorData);
                 view.getContext().startActivity(intent);
             });
         }
