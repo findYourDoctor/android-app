@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.abcd.findyourdoctor"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -70,10 +70,11 @@ dependencies {
 
 
         implementation "androidx.recyclerview:recyclerview:1.2.1"
-        // For control over item selection of both touch and mouse driven selection
+        //For control over item selection of both touch and mouse driven selection
         implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
     implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.android.support:multidex:1.0.3'
+implementation 'com.github.Drjacky:ImagePicker:1.8.4'
 
 
 }
