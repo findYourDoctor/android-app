@@ -37,8 +37,8 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun getChatId(receiverId : String) : String {
-        val userId = SharedPreferenceUtil.getLongPreferences(this, "userId", 0)
-        return if (userId > receiverId.toLong()) {
+        val userId = SharedPreferenceUtil.getPreferences(this, "userId", "")
+        return if (userId > receiverId) {
             (userId.toString() + receiverId)
         } else {
             (receiverId + userId.toString())
@@ -46,7 +46,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun getUserId(): String {
-        return SharedPreferenceUtil.getLongPreferences(this, "userId", 0).toString()
+        return SharedPreferenceUtil.getPreferences(this, "userId", "");
     }
 
     fun getFirebaseToken() {
