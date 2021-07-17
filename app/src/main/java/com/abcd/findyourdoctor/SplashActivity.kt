@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.abcd.findyourdoctor.dashboard.DashboardActivity
 import com.abcd.findyourdoctor.util.SharedPreferenceUtil
@@ -13,10 +14,9 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        val isUserIdSaved: Boolean = SharedPreferenceUtil.getLongPreferences(this, "userId", 0) > 0
+        val isUserIdSaved: Boolean = !TextUtils.isEmpty(SharedPreferenceUtil.getPreferences(this, "userId", ""))
         if (!isUserIdSaved) {
-            SharedPreferenceUtil.setLongPreferences(this, "userId", System.currentTimeMillis())
-            startHandler()
+            startActivity(Intent(this, LoginActivity::class.java))
         } else {
             startHandler()
         }

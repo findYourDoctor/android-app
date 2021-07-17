@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.abcd.findyourdoctor.dashboard.DashboardActivity;
+import com.abcd.findyourdoctor.util.SharedPreferenceUtil;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
 import com.firebase.ui.auth.IdpResponse;
@@ -44,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1=new Intent(LoginActivity.this,DoctorDetailActivity.class);
+                Intent intent1=new Intent(LoginActivity.this, DashboardActivity.class);
                 startActivity(intent1);
             }
         });
@@ -66,8 +68,14 @@ public class LoginActivity extends AppCompatActivity {
         if (result.getResultCode() == RESULT_OK) {
             // Successfully signed in
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            //call intent from here
-            // open user detail screen -> fill user info with phone number auto filled
+            if (user != null) {
+                SharedPreferenceUtil.setPreferences(this, "userId", user.getUid());
+                Intent intent = new Intent(this, PatientDetails.class);
+                intent.putExtra("phone_number", user.getPhoneNumber());
+                startActivity(intent);
+            }
+
+
         } else {
             Log.d("SignIn", "");
         }
