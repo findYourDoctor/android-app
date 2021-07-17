@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
-    private Button submit;
+//    private Button submit;
 
     FirebaseAuth mFirebaseAuth;
 
@@ -42,14 +42,14 @@ public class LoginActivity extends AppCompatActivity {
         signInLauncher.launch(intent);
 
 
-        submit=findViewById(R.id.submit);
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1=new Intent(LoginActivity.this, DashboardActivity.class);
-                startActivity(intent1);
-            }
-        });
+//        submit=findViewById(R.id.submit);
+//        submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent1=new Intent(LoginActivity.this, DashboardActivity.class);
+//                startActivity(intent1);
+//            }
+//        });
 
     }
 
@@ -79,5 +79,11 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             Log.d("SignIn", "");
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

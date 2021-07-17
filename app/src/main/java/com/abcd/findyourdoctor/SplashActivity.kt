@@ -16,7 +16,11 @@ class SplashActivity : AppCompatActivity() {
 
         val isUserIdSaved: Boolean = !TextUtils.isEmpty(SharedPreferenceUtil.getPreferences(this, "userId", ""))
         if (!isUserIdSaved) {
-            startActivity(Intent(this, LoginActivity::class.java))
+
+            Handler(Looper.getMainLooper()).postDelayed(Runnable {
+                        startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }, 1000)
         } else {
             startHandler()
         }

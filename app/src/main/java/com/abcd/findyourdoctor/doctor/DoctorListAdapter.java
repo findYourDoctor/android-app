@@ -44,19 +44,19 @@ public class DoctorListAdapter extends RecyclerView.Adapter<DoctorListAdapter.Vi
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtName, txtStatus, txtSpeciality;
+        TextView txtName, txtSpeciality;
         View view;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             view = itemView;
             txtName = itemView.findViewById(R.id.txtName);
-            txtStatus = itemView.findViewById(R.id.txtStatus);
+//            txtStatus = itemView.findViewById(R.id.txtStatus);
             txtSpeciality = itemView.findViewById(R.id.txtDepartment);
         }
 
         public void bindData(DoctorData doctorData) {
             txtName.setText(doctorData.getName());
-            txtStatus.setText("Online"); //todo check on the basis of isOnline flag
+//            txtStatus.setText("Online"); //todo check on the basis of isOnline flag
             txtSpeciality.setText(doctorData.getSpeciality());
 
             view.setOnClickListener(view1 -> {
