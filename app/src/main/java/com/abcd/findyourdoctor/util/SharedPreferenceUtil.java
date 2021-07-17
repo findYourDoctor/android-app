@@ -44,10 +44,6 @@ public final class SharedPreferenceUtil {
         return getPreferences(context).getInt(key, defValue);
     }
 
-//    public static Long getLongPreferences(Context context, String key, long defValue) {
-//        return getPreferences(context).getLong(key, defValue);
-//    }
-
     public static float getFloatPreferences(Context context, String key, float defValue) {
         return getPreferences(context).getFloat(key, defValue);
     }

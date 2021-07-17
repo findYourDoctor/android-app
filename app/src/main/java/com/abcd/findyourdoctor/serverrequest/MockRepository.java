@@ -18,15 +18,6 @@ public class MockRepository {
     private MockRepository() {
     }
 
-    public  <T> T getData(Context context, TypeToken type, String fileName) {
-        String apiRes = loadJSONFromAsset(context, fileName);
-
-        Gson gson = new Gson();
-
-        return gson.fromJson(apiRes, type.getType());
-
-    }
-
     public  <T> T getData(Context context, Class<T> tClass, String fileName) {
         String apiRes = loadJSONFromAsset(context, fileName);
 

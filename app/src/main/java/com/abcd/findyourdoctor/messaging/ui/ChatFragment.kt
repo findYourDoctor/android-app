@@ -28,13 +28,14 @@ import com.abcd.findyourdoctor.messaging.entity.SecondUserData
 import com.abcd.findyourdoctor.util.MyScrollToBottomObserver
 import com.abcd.findyourdoctor.util.SharedPreferenceUtil
 import com.google.firebase.database.*
+import java.util.*
 import kotlin.NoSuchElementException
 import kotlin.collections.ArrayList
 
 
 class ChatFragment : Fragment() {
 
-    private var userId: Long? = null
+    private var userId: String? = null
     private lateinit var chatRecycler: RecyclerView
     private lateinit var imgSend: ImageView
     private lateinit var editChat: EditText
@@ -65,7 +66,7 @@ class ChatFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ChatViewModel::class.java)
 
-        userId = SharedPreferenceUtil.getLongPreferences(activity, "userId", 0)
+        userId = SharedPreferenceUtil.getPreferences(activity, "userId", "")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

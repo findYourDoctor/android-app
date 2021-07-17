@@ -9,6 +9,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.util.*
 import kotlin.collections.ArrayList
 
 class ActiveChatListViewModel(application: Application) : AndroidViewModel(application) {
@@ -18,7 +19,7 @@ class ActiveChatListViewModel(application: Application) : AndroidViewModel(appli
     val activeChatLiveData: MutableLiveData<ArrayList<ActiveChatData>> = MutableLiveData()
 
     fun getActiveChatList() {
-        val userId = SharedPreferenceUtil.getLongPreferences(getApplication(), "userId", 0)
+        val userId = SharedPreferenceUtil.getPreferences(getApplication(), "userId", "")
         database.child("activeChats").child(userId.toString()).orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 activeChatList.clear()
