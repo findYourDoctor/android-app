@@ -33,7 +33,7 @@
                     android:id="@+id/txtPatient_Name"
                     android:layout_width="266dp"
                     android:layout_height="match_parent"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:textStyle="bold"/>
 
                 <androidx.cardview.widget.CardView
@@ -42,8 +42,6 @@
                     android:layout_margin="10dp"
                     android:padding="10dp"
                     app:cardCornerRadius="70dp">
-
-                    ">
 
                     <ImageView
                         android:id="@+id/imgDp"

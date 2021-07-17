@@ -30,13 +30,13 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".DoctorDetailActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".PatientDetails"
             android:theme="@style/AppTheme.NoActionBar"/>
 <!--    <activity-->
 <!--            android:name=".dashboard.DashboardActivity"-->
 <!--            android:label="@string/title_activity_dash_board_"-->
 <!--            android:theme="@style/AppTheme.NoActionBar" />-->
-        <activity android:name=".paitent_details">
+        <activity android:name=".Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
