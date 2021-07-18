@@ -1,17 +1,13 @@
 package com.abcd.findyourdoctor
 
 import android.app.ProgressDialog
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 
-import android.R
 import android.util.Log
 
-import androidx.annotation.NonNull
-import com.abcd.findyourdoctor.messaging.ChatConstant
-import com.abcd.findyourdoctor.util.SharedPreferenceUtil
+import com.app.chatmodule.messaging.ChatConstant
+import com.app.chatmodule.util.SharedPreferenceUtil
 
 import com.google.android.gms.tasks.OnCompleteListener
 

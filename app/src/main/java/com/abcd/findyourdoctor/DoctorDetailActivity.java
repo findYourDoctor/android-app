@@ -11,8 +11,9 @@ import android.widget.TextView;
 
 import com.abcd.findyourdoctor.doctor.entity.DoctorData;
 import com.abcd.findyourdoctor.doctor.entity.DoctorDetailData;
-import com.abcd.findyourdoctor.messaging.entity.SecondUserData;
-import com.abcd.findyourdoctor.messaging.ui.ChatActivity;
+import com.app.chatmodule.DoctorConstants;
+import com.app.chatmodule.messaging.entity.SecondUserData;
+import com.app.chatmodule.messaging.ui.ChatActivity;
 import com.abcd.findyourdoctor.serverrequest.MockRepository;
 import com.squareup.picasso.Picasso;
 

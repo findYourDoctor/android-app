@@ -4,13 +4,12 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.abcd.findyourdoctor.DoctorConstants;
+import com.app.chatmodule.DoctorConstants;
 import com.abcd.findyourdoctor.DoctorDetailActivity;
 import com.abcd.findyourdoctor.R;
 import com.abcd.findyourdoctor.doctor.entity.DoctorData;

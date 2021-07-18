@@ -7,28 +7,34 @@ import android.os.Looper
 import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.abcd.findyourdoctor.dashboard.DashboardActivity
-import com.abcd.findyourdoctor.messaging.ChatConstant
-import com.abcd.findyourdoctor.util.SharedPreferenceUtil
+import com.app.chatmodule.messaging.ChatConstant
+import com.app.chatmodule.util.SharedPreferenceUtil
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-<<<<<<< HEAD
-        val isUserIdSaved: Boolean = !TextUtils.isEmpty(SharedPreferenceUtil.getPreferences(this, "userId", ""))
+        val isUserIdSaved: Boolean =
+            !TextUtils.isEmpty(SharedPreferenceUtil.getPreferences(this, ChatConstant.USER_ID, ""))
         if (!isUserIdSaved) {
 
             Handler(Looper.getMainLooper()).postDelayed(Runnable {
-                        startActivity(Intent(this, LoginActivity::class.java))
+//                startActivity(Intent(this, LoginActivity::class.java))
+                SharedPreferenceUtil.setPreferences(
+                    this,
+                    ChatConstant.USER_ID,
+                    System.currentTimeMillis().toString()
+                )
+                startActivity(
+                    Intent(
+                        this@SplashActivity,
+                        DashboardActivity
+                        ::class.java
+                    )
+                )
                 finish()
             }, 1000)
-=======
-        val isUserIdSaved: Boolean = !TextUtils.isEmpty(SharedPreferenceUtil.getPreferences(this, ChatConstant.USER_ID, ""))
-        if (!isUserIdSaved) {
-            SharedPreferenceUtil.setPreferences(this, ChatConstant.USER_ID, System.currentTimeMillis().toString())
-            startHandler()
->>>>>>> commit for chat adapter
         } else {
             startHandler()
         }

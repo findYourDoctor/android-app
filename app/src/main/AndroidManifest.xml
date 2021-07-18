@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".messaging.doctor.DoctorChatActivity"
+            android:name="com.app.chatmodule.messaging.doctor.DoctorChatActivity"
             android:exported="true" />
         <activity
             android:name=".dashboard.DashboardActivity"
@@ -24,7 +24,7 @@
             android:name=".doctor.DoctorListActivity"
             android:exported="true" />
         <activity
-            android:name=".messaging.ui.ChatActivity"
+            android:name="com.app.chatmodule.messaging.ui.ChatActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".LoginActivity" />
