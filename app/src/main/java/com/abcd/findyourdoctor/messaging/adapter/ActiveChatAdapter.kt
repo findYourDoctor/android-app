@@ -1,4 +1,4 @@
-package com.abcd.findyourdoctor.dashboard.ui.notifications
+package com.abcd.findyourdoctor.messaging.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.abcd.findyourdoctor.DoctorConstants
 import com.abcd.findyourdoctor.R
-import com.abcd.findyourdoctor.doctor.entity.DoctorData
+import com.abcd.findyourdoctor.messaging.entity.ActiveChatData
 import com.abcd.findyourdoctor.messaging.entity.SecondUserData
 import com.abcd.findyourdoctor.messaging.ui.ChatActivity
 

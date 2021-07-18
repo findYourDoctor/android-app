@@ -61,7 +61,7 @@ public class DoctorListAdapter extends RecyclerView.Adapter<DoctorListAdapter.Vi
 
             view.setOnClickListener(view1 -> {
                 Intent intent = new Intent(view.getContext(), DoctorDetailActivity.class);
-                intent.putExtra(DoctorConstants.Companion.getDOCTOR_DATA(), doctorData);
+                intent.putExtra(DoctorConstants.DOCTOR_DATA, doctorData);
                 view.getContext().startActivity(intent);
             });
         }

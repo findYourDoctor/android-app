@@ -38,7 +38,7 @@ public class DoctorDetailActivity extends AppCompatActivity {
         setData();
         setOnClickListener();
         if (getIntent().getExtras() != null) {
-            doctorData = getIntent().getParcelableExtra(DoctorConstants.Companion.getDOCTOR_DATA());
+            doctorData = getIntent().getParcelableExtra(DoctorConstants.DOCTOR_DATA);
         }
     }
 
@@ -79,7 +79,7 @@ public class DoctorDetailActivity extends AppCompatActivity {
                 secondUserData.setName(doctorData.getName());
                 secondUserData.setImageUrl("");
                 Intent intent = new Intent(DoctorDetailActivity.this, ChatActivity.class);
-                intent.putExtra(DoctorConstants.Companion.getDOCTOR_DATA(), secondUserData);
+                intent.putExtra(DoctorConstants.DOCTOR_DATA, secondUserData);
                 startActivity(intent);
             }
         });

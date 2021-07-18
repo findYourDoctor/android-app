@@ -1,9 +1,11 @@
-package com.abcd.findyourdoctor.dashboard.ui.notifications
+package com.abcd.findyourdoctor.messaging.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.abcd.findyourdoctor.messaging.ChatConstant
+import com.abcd.findyourdoctor.messaging.entity.ActiveChatData
 import com.abcd.findyourdoctor.util.SharedPreferenceUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -19,8 +21,8 @@ class ActiveChatListViewModel(application: Application) : AndroidViewModel(appli
     val activeChatLiveData: MutableLiveData<ArrayList<ActiveChatData>> = MutableLiveData()
 
     fun getActiveChatList() {
-        val userId = SharedPreferenceUtil.getPreferences(getApplication(), "userId", "")
-        database.child("activeChats").child(userId.toString()).orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
+        val userId = SharedPreferenceUtil.getPreferences(getApplication(), ChatConstant.USER_ID, "")
+        database.child(ChatConstant.ACTIVE_CHATS).child(userId.toString()).orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 activeChatList.clear()
                 for (user in snapshot.children) {
@@ -35,7 +37,7 @@ class ActiveChatListViewModel(application: Application) : AndroidViewModel(appli
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Log.e("FirebaseChat", error.message)
             }
 
         })

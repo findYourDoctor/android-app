@@ -19,10 +19,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.abcd.findyourdoctor.BaseActivity
 import com.abcd.findyourdoctor.DoctorConstants
 import com.abcd.findyourdoctor.R
-import com.abcd.findyourdoctor.dashboard.ui.notifications.ActiveChatData
-import com.abcd.findyourdoctor.doctor.entity.DoctorData
-import com.abcd.findyourdoctor.messaging.ChatAdapter
-import com.abcd.findyourdoctor.messaging.ChatViewModel
+import com.abcd.findyourdoctor.messaging.ChatConstant
+import com.abcd.findyourdoctor.messaging.entity.ActiveChatData
+import com.abcd.findyourdoctor.messaging.adapter.ChatAdapter
+import com.abcd.findyourdoctor.messaging.viewmodel.ChatViewModel
 import com.abcd.findyourdoctor.messaging.entity.ChatData
 import com.abcd.findyourdoctor.messaging.entity.SecondUserData
 import com.abcd.findyourdoctor.util.MyScrollToBottomObserver
@@ -66,7 +66,11 @@ class ChatFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ChatViewModel::class.java)
 
+<<<<<<< HEAD
         userId = SharedPreferenceUtil.getPreferences(activity, "userId", "")
+=======
+        userId = SharedPreferenceUtil.getPreferences(activity, ChatConstant.USER_ID, "")
+>>>>>>> commit for chat adapter
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -89,7 +93,7 @@ class ChatFragment : Fragment() {
         chatData.message = message
         chatData.senderId = (activity as BaseActivity).getUserId()
         chatData.timestamp = System.currentTimeMillis()
-        database.child("messages").child(chatId).push().setValue(chatData)
+        database.child(ChatConstant.MESSAGES).child(chatId).push().setValue(chatData)
     }
 
     private fun updateActiveUsers(message: String, timestamp: Long) {
@@ -108,12 +112,12 @@ class ChatFragment : Fragment() {
             imageUrl = "",
             name = secondUserData.name!!
         )
-        database.child("activeChats").child(userId.toString()).child(chatId).setValue(chatDataUser1)
-        database.child("activeChats").child(secondUserData.id!!).child(chatId).setValue(chatDataUser2)
+        database.child(ChatConstant.ACTIVE_CHATS).child(userId.toString()).child(chatId).setValue(chatDataUser1)
+        database.child(ChatConstant.ACTIVE_CHATS).child(secondUserData.id!!).child(chatId).setValue(chatDataUser2)
     }
 
     private fun startObservingForMessages() {
-        database.child("messages").child(chatId).addValueEventListener(object : ValueEventListener{
+        database.child(ChatConstant.MESSAGES).child(chatId).addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 val data = snapshot.children
                 try {
@@ -125,38 +129,37 @@ class ChatFragment : Fragment() {
 
                     }
                 } catch (ex : NoSuchElementException) {
-                    Log.e("", "")
+                    Log.e("FirebaseChat", ex.localizedMessage)
                 }
 
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("", "")
+                Log.e("FirebaseChat", error.message)
             }
 
         })
-        database.child("messages").child(chatId).addChildEventListener(object : ChildEventListener {
+        database.child(ChatConstant.MESSAGES).child(chatId).addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                Log.i("firebase", "Got value ${snapshot.value}")
                 val data = snapshot.getValue(ChatData::class.java)
                 chatList.add(data!!)
                 adapter.notifyItemInserted(chatList.size - 1)
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                Log.i("firebase", "Got value ${snapshot.value}")
+                Log.i("FirebaseChat", "Got value ${snapshot.value}")
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
-                Log.i("firebase", "Got value ${snapshot.value}")
+                Log.i("FirebaseChat", "Got value ${snapshot.value}")
             }
 
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                Log.i("firebase", "Got value ${snapshot.value}")
+                Log.i("FirebaseChat", "Got value ${snapshot.value}")
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.i("firebase", "Got value ${error.message}")
+                Log.i("FirebaseChat", "Got value ${error.message}")
             }
 
         })

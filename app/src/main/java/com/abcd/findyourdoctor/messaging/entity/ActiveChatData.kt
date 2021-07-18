@@ -1,4 +1,4 @@
-package com.abcd.findyourdoctor.dashboard.ui.notifications
+package com.abcd.findyourdoctor.messaging.entity
 
 data class ActiveChatData(
     var message : String = "",

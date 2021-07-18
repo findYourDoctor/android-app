@@ -15,11 +15,10 @@
  */
 package com.abcd.findyourdoctor.util
 
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
-import com.abcd.findyourdoctor.messaging.ChatAdapter
+import com.abcd.findyourdoctor.messaging.adapter.ChatAdapter
 
 class MyScrollToBottomObserver(
     private val recycler: RecyclerView,

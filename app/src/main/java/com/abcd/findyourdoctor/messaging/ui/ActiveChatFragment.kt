@@ -1,4 +1,4 @@
-package com.abcd.findyourdoctor.dashboard.ui.notifications
+package com.abcd.findyourdoctor.messaging.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abcd.findyourdoctor.BaseActivity
 import com.abcd.findyourdoctor.R
+import com.abcd.findyourdoctor.messaging.viewmodel.ActiveChatListViewModel
 import com.abcd.findyourdoctor.databinding.FragmentChatBinding
+import com.abcd.findyourdoctor.messaging.adapter.ActiveChatAdapter
 
 class ActiveChatFragment : Fragment() {
 

@@ -21,10 +21,6 @@ public final class SharedPreferenceUtil {
         getEditor(context).putBoolean(key, value).apply();
     }
 
-//    public static void setLongPreferences(Context context, String key, long value) {
-//        getEditor(context).putLong(key, value).apply();
-//    }
-
     public static void setFloatPreferences(Context context, String key, float value) {
         getEditor(context).putFloat(key, value).apply();
     }

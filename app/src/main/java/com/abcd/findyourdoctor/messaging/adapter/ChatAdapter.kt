@@ -1,4 +1,4 @@
-package com.abcd.findyourdoctor.messaging
+package com.abcd.findyourdoctor.messaging.adapter
 
 import android.view.LayoutInflater
 import android.view.View

@@ -7,6 +7,7 @@ import android.os.Looper
 import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.abcd.findyourdoctor.dashboard.DashboardActivity
+import com.abcd.findyourdoctor.messaging.ChatConstant
 import com.abcd.findyourdoctor.util.SharedPreferenceUtil
 
 class SplashActivity : AppCompatActivity() {
@@ -14,6 +15,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+<<<<<<< HEAD
         val isUserIdSaved: Boolean = !TextUtils.isEmpty(SharedPreferenceUtil.getPreferences(this, "userId", ""))
         if (!isUserIdSaved) {
 
@@ -21,6 +23,12 @@ class SplashActivity : AppCompatActivity() {
                         startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }, 1000)
+=======
+        val isUserIdSaved: Boolean = !TextUtils.isEmpty(SharedPreferenceUtil.getPreferences(this, ChatConstant.USER_ID, ""))
+        if (!isUserIdSaved) {
+            SharedPreferenceUtil.setPreferences(this, ChatConstant.USER_ID, System.currentTimeMillis().toString())
+            startHandler()
+>>>>>>> commit for chat adapter
         } else {
             startHandler()
         }

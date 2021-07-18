@@ -1,4 +1,4 @@
-package com.abcd.findyourdoctor.messaging
+package com.abcd.findyourdoctor.messaging.viewmodel
 
 import androidx.lifecycle.ViewModel
 
