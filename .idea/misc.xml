@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/drawable/ic_chat.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/tab_selector.xml" value="0.178125" />
         <entry key="app/src/main/res/layout/active_chat_adapter.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_base.xml" value="0.7016129032258065" />
         <entry key="app/src/main/res/layout/activity_base_actitvity.xml" value="0.1" />
@@ -26,6 +27,7 @@
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.16197916666666667" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_doctor_chat.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.16197916666666667" />
         <entry key="app/src/main/res/layout/left_row.xml" value="0.40404040404040403" />
         <entry key="app/src/main/res/layout/message_fragment.xml" value="0.25588235294117645" />

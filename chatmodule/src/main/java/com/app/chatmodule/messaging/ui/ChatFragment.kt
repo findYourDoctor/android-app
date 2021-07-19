@@ -42,6 +42,7 @@ class ChatFragment : BaseFragment() {
     private val database = FirebaseDatabase.getInstance().reference
     private var chatList : ArrayList<ChatData> = ArrayList()
     private lateinit var adapter : ChatAdapter
+    private lateinit var viewModel: ChatViewModel
 
     companion object {
         fun newInstance(userData: SecondUserData) = ChatFragment().apply {
@@ -50,8 +51,6 @@ class ChatFragment : BaseFragment() {
             }
         }
     }
-
-    private lateinit var viewModel: ChatViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,9 +61,7 @@ class ChatFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ChatViewModel::class.java)
 
-        mUserId = SharedPreferenceUtil.getPreferences(activity, ChatConstant.USER_ID, "")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -73,7 +70,9 @@ class ChatFragment : BaseFragment() {
         editChat = view.findViewById(R.id.editChat)
         imgSend = view.findViewById(R.id.imgSend)
         chatTextWatcher()
+        viewModel = ViewModelProvider(this).get(ChatViewModel::class.java)
 
+        mUserId = SharedPreferenceUtil.getPreferences(activity, ChatConstant.USER_ID, "")
         startObservingForMessages()
         imgSend.setOnClickListener {
             send(editChat.text.toString())
@@ -90,49 +89,9 @@ class ChatFragment : BaseFragment() {
         database.child(ChatConstant.MESSAGES).child(chatId).push().setValue(chatData)
     }
 
-    private fun updateActiveUsers(message: String, timestamp: Long) {
-        val chatDataUser1 = ActiveChatData(
-            message = message,
-            timestamp = timestamp,
-            userId = secondUserData.id!!,
-            imageUrl = "",
-            name = secondUserData.name!!
-        )
-
-        val chatDataUser2 = ActiveChatData(
-            message = message,
-            timestamp = timestamp,
-            userId = mUserId.toString(),
-            imageUrl = "",
-            name = secondUserData.name!!
-        )
-        database.child(ChatConstant.ACTIVE_CHATS).child(mUserId.toString()).child(chatId).setValue(chatDataUser1)
-        database.child(ChatConstant.ACTIVE_CHATS).child(secondUserData.id!!).child(chatId).setValue(chatDataUser2)
-    }
-
     private fun startObservingForMessages() {
-        database.child(ChatConstant.MESSAGES).child(chatId).addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val data = snapshot.children
-                try {
-                    val messageObj = data.last().getValue(ChatData::class.java)
-                    if (messageObj != null) {
-                        Handler(Looper.getMainLooper()).post(Runnable {
-                            updateActiveUsers(messageObj.message, messageObj.timestamp)
-                        })
+        viewModel.updateActiveChats(chatId, secondUserData)
 
-                    }
-                } catch (ex : NoSuchElementException) {
-                    Log.e("FirebaseChat", ex.localizedMessage)
-                }
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("FirebaseChat", error.message)
-            }
-
-        })
         database.child(ChatConstant.MESSAGES).child(chatId).addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val data = snapshot.getValue(ChatData::class.java)
