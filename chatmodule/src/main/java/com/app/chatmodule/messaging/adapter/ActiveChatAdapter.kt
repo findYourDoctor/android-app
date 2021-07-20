@@ -1,6 +1,7 @@
 package com.app.chatmodule.messaging.adapter
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.app.chatmodule.R
 import com.app.chatmodule.messaging.entity.ActiveChatData
 import com.app.chatmodule.messaging.entity.SecondUserData
 import com.app.chatmodule.messaging.ui.ChatActivity
+import com.app.chatmodule.util.TimeUtil
 
 class ActiveChatAdapter(private val activeChatList : ArrayList<ActiveChatData>) : RecyclerView.Adapter<ActiveChatAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -51,6 +53,12 @@ class ActiveChatAdapter(private val activeChatList : ArrayList<ActiveChatData>) 
     private fun setData(position: Int, holder: ViewHolder) {
         holder.textUserName.text = activeChatList[position].name
         holder.textMessage.text = activeChatList[position].message
+        holder.txtDate.text = TimeUtil.getFormattedDate(activeChatList[position].timestamp)
+//        if (activeChatList[position].chatCount > 0) {
+//            holder.textMessage.typeface = Typeface.defaultFromStyle(Typeface.BOLD_ITALIC)
+//        } else {
+//            holder.textMessage.typeface = Typeface.defaultFromStyle(Typeface.NORMAL)
+//        }
     }
 
     override fun getItemCount(): Int {

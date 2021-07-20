@@ -24,8 +24,8 @@ class SplashActivity : AppCompatActivity() {
                 SharedPreferenceUtil.setPreferences(
                     this,
                     ChatConstant.USER_ID,
-                    "1625952788444"
-                    /*System.currentTimeMillis().toString()*/
+                    /*"1625952788444"*/
+                    System.currentTimeMillis().toString()
                 )
                 startActivity(
                     Intent(

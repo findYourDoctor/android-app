@@ -5,10 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import com.abcd.findyourdoctor.databinding.FragmentProfileBinding
+
 
 class ProfileFragment : Fragment() {
 
@@ -23,7 +28,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         dashboardViewModel =
             ViewModelProvider(this).get(ProfileViewModel::class.java)
 
@@ -34,6 +39,14 @@ class ProfileFragment : Fragment() {
         dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+//        val navController = findNavController()
+//
+//        val mAppBarConfiguration = AppBarConfiguration.Builder().build()
+//        NavigationUI.setupActionBarWithNavController(activity as AppCompatActivity, navController, mAppBarConfiguration)
+
+        val appBarConfiguration : AppBarConfiguration = AppBarConfiguration.Builder().build();
+        NavigationUI.setupActionBarWithNavController(activity as AppCompatActivity, findNavController(), appBarConfiguration)
+
         return root
     }
 
@@ -41,4 +54,5 @@ class ProfileFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

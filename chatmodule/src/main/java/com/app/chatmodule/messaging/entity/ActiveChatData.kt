@@ -5,6 +5,6 @@ data class ActiveChatData(
     var name: String = "",
     var userId: String = "",
     var imageUrl: String = "",
-    var timestamp : Long = 0
-
+    var timestamp : Long = 0,
+    var chatCount : Int = 0
 )

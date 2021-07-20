@@ -46,6 +46,14 @@ abstract class BaseActivity : AppCompatActivity() {
         return SharedPreferenceUtil.getPreferences(this, ChatConstant.USER_ID, 0).toString()
     }
 
+    fun showBackButton() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+    }
+
+    fun setTitle(title : String) {
+        supportActionBar?.title = title
+    }
+
     fun getFirebaseToken() {
         FirebaseMessaging.getInstance().token
             .addOnCompleteListener(OnCompleteListener { task ->
@@ -62,5 +70,11 @@ abstract class BaseActivity : AppCompatActivity() {
 //                Log.d("TAG", msg)
 //                Toast.makeText(this@BaseActivity, msg, Toast.LENGTH_SHORT).show()
             })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return super.onSupportNavigateUp()
+
     }
 }

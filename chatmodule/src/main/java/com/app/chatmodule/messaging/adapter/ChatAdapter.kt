@@ -44,14 +44,14 @@ class ChatAdapter(private val chatList: ArrayList<ChatData>, private val userId 
         when {
             position == 0 -> {
                 holder.txtDate.visibility = View.VISIBLE
-                holder.txtDate.text = TimeUtil.getFormattedDate(holder.textTimeUser.context, chatList[position].timestamp)
+                holder.txtDate.text = TimeUtil.getFormattedDate(chatList[position].timestamp)
             }
-            TimeUtil.getFormattedDate(holder.textTimeUser.context, chatList[position - 1].timestamp).equals(TimeUtil.getFormattedDate(holder.textTimeUser.context, chatList[position].timestamp)) -> {
+            TimeUtil.getFormattedDate(chatList[position - 1].timestamp).equals(TimeUtil.getFormattedDate(chatList[position].timestamp)) -> {
                 holder.txtDate.visibility = View.GONE
             }
             else -> {
                 holder.txtDate.visibility = View.VISIBLE
-                holder.txtDate.text = TimeUtil.getFormattedDate(holder.textTimeUser.context, chatList[position].timestamp)
+                holder.txtDate.text = TimeUtil.getFormattedDate(chatList[position].timestamp)
             }
         }
         if (chatList[position].senderId == userId) {
@@ -59,13 +59,13 @@ class ChatAdapter(private val chatList: ArrayList<ChatData>, private val userId 
             holder.layoutRight.visibility = View.VISIBLE
 
             holder.textChatUser.text = chatList[position].message
-            holder.textTimeUser.text = TimeUtil.getTimeFromTimeStamp(holder.textTimeUser.context, chatList[position].timestamp)
+            holder.textTimeUser.text = TimeUtil.getTimeFromTimeStamp(chatList[position].timestamp)
         } else {
             holder.layoutLeft.visibility = View.VISIBLE
             holder.layoutRight.visibility = View.GONE
 
             holder.textChatSender.text = chatList[position].message
-            holder.textTimeSender.text = TimeUtil.getTimeFromTimeStamp(holder.textTimeUser.context, chatList[position].timestamp)
+            holder.textTimeSender.text = TimeUtil.getTimeFromTimeStamp(chatList[position].timestamp)
         }
     }
 

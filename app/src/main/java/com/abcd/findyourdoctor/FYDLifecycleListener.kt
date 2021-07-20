@@ -13,43 +13,43 @@ class FYDLifecycleListener(private val fydApplication: FYDApplication) : Lifecyc
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onMoveToForeground() {
-        Log.d("SampleLifecycle", "Returning to foreground…")
+        Log.d("Lifecycle", "Returning to foreground…")
 
-        if (!TextUtils.isEmpty(
-                SharedPreferenceUtil.getPreferences(
-                    fydApplication,
-                    ChatConstant.USER_ID,
-                    ""
-                )
-            )
-        ) {
-            FirebaseDatabase.getInstance().reference.child("doctor").child(
-                SharedPreferenceUtil.getPreferences(
-                    fydApplication,
-                    ChatConstant.USER_ID,
-                    ""
-                )
-            ).child("online").setValue(true)
-        }
+//        if (!TextUtils.isEmpty(
+//                SharedPreferenceUtil.getPreferences(
+//                    fydApplication,
+//                    ChatConstant.USER_ID,
+//                    ""
+//                )
+//            )
+//        ) {
+//            FirebaseDatabase.getInstance().reference.child("doctor").child(
+//                SharedPreferenceUtil.getPreferences(
+//                    fydApplication,
+//                    ChatConstant.USER_ID,
+//                    ""
+//                )
+//            ).child("online").setValue(true)
+//        }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun onMoveToBackground() {
-        if (!TextUtils.isEmpty(
-                SharedPreferenceUtil.getPreferences(
-                    fydApplication,
-                    ChatConstant.USER_ID,
-                    ""
-                )
-            )
-        ) {
-            FirebaseDatabase.getInstance().reference.child("doctor").child(
-                SharedPreferenceUtil.getPreferences(
-                    fydApplication,
-                    ChatConstant.USER_ID,
-                    ""
-                )
-            ).child("online").setValue(false)
-        }
+//        if (!TextUtils.isEmpty(
+//                SharedPreferenceUtil.getPreferences(
+//                    fydApplication,
+//                    ChatConstant.USER_ID,
+//                    ""
+//                )
+//            )
+//        ) {
+//            FirebaseDatabase.getInstance().reference.child("doctor").child(
+//                SharedPreferenceUtil.getPreferences(
+//                    fydApplication,
+//                    ChatConstant.USER_ID,
+//                    ""
+//                )
+//            ).child("online").setValue(false)
+//        }
     }
 }

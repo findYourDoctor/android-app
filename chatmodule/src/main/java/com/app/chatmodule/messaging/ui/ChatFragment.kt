@@ -59,11 +59,6 @@ class ChatFragment : BaseFragment() {
         return inflater.inflate(R.layout.message_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         chatRecycler = view.findViewById(R.id.recyclerChat)
@@ -87,11 +82,11 @@ class ChatFragment : BaseFragment() {
         chatData.senderId = getUserId()
         chatData.timestamp = System.currentTimeMillis()
         database.child(ChatConstant.MESSAGES).child(chatId).push().setValue(chatData)
+        viewModel.updateActiveUsers(chatData, secondUserData, chatId)
+
     }
 
     private fun startObservingForMessages() {
-        viewModel.updateActiveChats(chatId, secondUserData)
-
         database.child(ChatConstant.MESSAGES).child(chatId).addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val data = snapshot.getValue(ChatData::class.java)
@@ -165,6 +160,11 @@ class ChatFragment : BaseFragment() {
                 chatId = getChatId(secondUserData.id!!)
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+//        viewModel.resetChatCount(getUserId(), chatId)
     }
 
 }

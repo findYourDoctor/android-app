@@ -44,7 +44,8 @@
                         android:id="@+id/roundImg"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:scaleType="centerCrop" />
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/doctor_avatar"/>
 
                 </androidx.cardview.widget.CardView>
 

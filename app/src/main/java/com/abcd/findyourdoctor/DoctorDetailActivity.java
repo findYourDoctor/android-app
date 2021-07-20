@@ -17,7 +17,7 @@ import com.app.chatmodule.messaging.ui.ChatActivity;
 import com.abcd.findyourdoctor.serverrequest.MockRepository;
 import com.squareup.picasso.Picasso;
 
-public class DoctorDetailActivity extends AppCompatActivity {
+public class DoctorDetailActivity extends BaseActivity {
 
     private DoctorDetailData doctorDetailData;
     private TextView txtName;
@@ -41,6 +41,8 @@ public class DoctorDetailActivity extends AppCompatActivity {
         if (getIntent().getExtras() != null) {
             doctorData = getIntent().getParcelableExtra(DoctorConstants.DOCTOR_DATA);
         }
+        showBackButton();
+        setTitle("Doctor Detail");
     }
 
     private void initialiseView() {

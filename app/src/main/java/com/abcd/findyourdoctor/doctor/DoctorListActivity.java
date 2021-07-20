@@ -42,6 +42,12 @@ public class DoctorListActivity extends BaseActivity {
             shouldFetchOnlineDoctors = extras.getBoolean(ChatConstant.FETCH_ONLINE);
         }
         getDoctorList();
+        showBackButton();
+        if (shouldFetchOnlineDoctors) {
+            setTitle("Online Doctors");
+        } else {
+            setTitle("Near By Doctors");
+        }
     }
 
     private void getDoctorList() {

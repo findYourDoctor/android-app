@@ -18,11 +18,12 @@
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.31715575620767494" />
         <entry key="app/src/main/res/layout/activity_doctor_chat.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_doctor_details.xml" value="0.16197916666666667" />
+        <entry key="app/src/main/res/layout/activity_doctor_list.xml" value="0.10144927536231885" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.33" />
         <entry key="app/src/main/res/layout/blank_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/chat_activity.xml" value="0.1" />
         <entry key="app/src/main/res/layout/chat_row.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/doctor_list_row.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/doctor_list_row.xml" value="0.22" />
         <entry key="app/src/main/res/layout/empty_chat_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.16197916666666667" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.33" />
@@ -38,8 +39,9 @@
         <entry key="chatmodule/src/main/res/drawable/chat_outgoing.xml" value="0.178125" />
         <entry key="chatmodule/src/main/res/drawable/circle_drawable.xml" value="0.178125" />
         <entry key="chatmodule/src/main/res/drawable/ic_chat.xml" value="0.178125" />
+        <entry key="chatmodule/src/main/res/layout/active_chat_adapter.xml" value="0.22" />
         <entry key="chatmodule/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="chatmodule/src/main/res/layout/chat_activity.xml" value="0.10144927536231885" />
+        <entry key="chatmodule/src/main/res/layout/chat_activity.xml" value="0.32395833333333335" />
         <entry key="chatmodule/src/main/res/layout/empty_chat_view.xml" value="0.10144927536231885" />
         <entry key="chatmodule/src/main/res/layout/fragment_base.xml" value="0.10144927536231885" />
         <entry key="chatmodule/src/main/res/layout/fragment_chat.xml" value="0.10144927536231885" />

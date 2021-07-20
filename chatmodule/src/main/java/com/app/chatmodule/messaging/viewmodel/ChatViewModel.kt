@@ -22,35 +22,9 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
     private var chatId: String = ""
     private var userId: String =
         SharedPreferenceUtil.getPreferences(application, ChatConstant.USER_ID, "");
+    private var chatCount = 0;
 
-    fun updateActiveChats(chatId: String, secondUserData: SecondUserData) {
-        this.chatId = chatId
-        database.child(ChatConstant.MESSAGES).child(chatId).addValueEventListener(object :
-            ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val data = snapshot.children
-                try {
-                    val messageObj = data.last().getValue(ChatData::class.java)
-                    if (messageObj != null) {
-                        Handler(Looper.getMainLooper()).post(Runnable {
-                            updateActiveUsers(messageObj, secondUserData)
-                        })
-
-                    }
-                } catch (ex: NoSuchElementException) {
-                    Log.e("FirebaseChat", ex.localizedMessage)
-                }
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("FirebaseChat", error.message)
-            }
-
-        })
-    }
-
-    private fun updateActiveUsers(messageObj: ChatData, secondUserData: SecondUserData) {
+    fun updateActiveUsers(messageObj: ChatData, secondUserData: SecondUserData, chatId: String) {
         //Second user's data visible to primary user
         val chatDataUser1 = ActiveChatData(
             message = messageObj.message,
@@ -65,7 +39,8 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
             timestamp = messageObj.timestamp,
             userId = userId,
             imageUrl = "",
-            name = getUserName()
+            name = getUserName(),
+            chatCount = 1
         )
         database.child(ChatConstant.ACTIVE_CHATS).child(userId).child(chatId)
             .setValue(chatDataUser1)
@@ -99,5 +74,11 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
         }
 
         return "FYD User"
+    }
+
+    fun resetChatCount(userId : String, chatId : String) {
+        chatCount = 0;
+        database.child(ChatConstant.ACTIVE_CHATS).child(userId).child(chatId).child("chatCount")
+            .setValue(0)
     }
 }

@@ -21,7 +21,7 @@
             android:layout_marginLeft="10dp"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/imgProfilePic"
+            app:layout_constraintStart_toEndOf="@+id/cardViewImage"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Doctor Name" />
 
@@ -35,7 +35,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/txtTime"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imgProfilePic"
+            app:layout_constraintStart_toEndOf="@+id/cardViewImage"
             app:layout_constraintTop_toBottomOf="@+id/textName"
             tools:text="Hello How are you" />
 
@@ -49,12 +49,29 @@
             android:textSize="11sp"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imgProfilePic"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:cardCornerRadius="50dp">
+
+            <ImageView
+                android:id="@+id/imgProfilePic"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/doctor_avatar"/>
+
+        </androidx.cardview.widget.CardView>
+
+       <!-- <ImageView
+            android:id="@+id/imgProfilePic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/doctor_avatar" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
