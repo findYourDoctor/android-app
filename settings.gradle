@@ -1,2 +1,4 @@
 include ':app'
 rootProject.name = "FindYourDoctor"
+include ':chatmodule'
+include ':chat'

@@ -1,16 +1,13 @@
 package com.abcd.findyourdoctor
 
 import android.app.ProgressDialog
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 
-import android.R
 import android.util.Log
 
-import androidx.annotation.NonNull
-import com.abcd.findyourdoctor.util.SharedPreferenceUtil
+import com.app.chatmodule.messaging.ChatConstant
+import com.app.chatmodule.util.SharedPreferenceUtil
 
 import com.google.android.gms.tasks.OnCompleteListener
 
@@ -37,16 +34,24 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun getChatId(receiverId : String) : String {
-        val userId = SharedPreferenceUtil.getPreferences(this, "userId", "")
+        val userId = SharedPreferenceUtil.getPreferences(this, ChatConstant.USER_ID, "")
         return if (userId > receiverId) {
-            (userId.toString() + receiverId)
+            (userId + receiverId)
         } else {
-            (receiverId + userId.toString())
+            (receiverId + userId)
         }
     }
 
     fun getUserId(): String {
-        return SharedPreferenceUtil.getPreferences(this, "userId", "");
+        return SharedPreferenceUtil.getPreferences(this, ChatConstant.USER_ID, 0).toString()
+    }
+
+    fun showBackButton() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+    }
+
+    fun setTitle(title : String) {
+        supportActionBar?.title = title
     }
 
     fun getFirebaseToken() {
@@ -65,5 +70,11 @@ abstract class BaseActivity : AppCompatActivity() {
 //                Log.d("TAG", msg)
 //                Toast.makeText(this@BaseActivity, msg, Toast.LENGTH_SHORT).show()
             })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return super.onSupportNavigateUp()
+
     }
 }

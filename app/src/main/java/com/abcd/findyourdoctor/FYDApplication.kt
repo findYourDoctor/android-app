@@ -5,7 +5,7 @@ import androidx.lifecycle.ProcessLifecycleOwner
 
 class FYDApplication : Application() {
     private val lifecycleListener: FYDLifecycleListener by lazy {
-        FYDLifecycleListener()
+        FYDLifecycleListener(this)
     }
 
     override fun onCreate() {

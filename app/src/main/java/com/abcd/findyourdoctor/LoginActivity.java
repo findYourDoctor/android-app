@@ -7,11 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
-import com.abcd.findyourdoctor.dashboard.DashboardActivity;
-import com.abcd.findyourdoctor.util.SharedPreferenceUtil;
+import com.abcd.findyourdoctor.dashboard.ui.dashboard.AddProfileDetails;
+import com.app.chatmodule.util.SharedPreferenceUtil;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
 import com.firebase.ui.auth.IdpResponse;
@@ -70,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             if (user != null) {
                 SharedPreferenceUtil.setPreferences(this, "userId", user.getUid());
-                Intent intent = new Intent(this, PatientDetails.class);
+                Intent intent = new Intent(this, AddProfileDetails.class);
                 intent.putExtra("phone_number", user.getPhoneNumber());
                 startActivity(intent);
             }
