@@ -1,4 +1,4 @@
-package com.abcd.findyourdoctor;
+package com.abcd.findyourdoctor.dashboard.ui.dashboard;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,9 +13,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.abcd.findyourdoctor.R;
 import com.github.drjacky.imagepicker.ImagePicker;
 
-public class PatientDetails extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class AddProfileDetails extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
    ImageView imgdp;
    private String mobileNumber;
    private Spinner spinnerGender, spinnerBloodGroup, spinnerMaritalStatus;
@@ -33,7 +34,7 @@ public class PatientDetails extends AppCompatActivity implements AdapterView.OnI
         imgdp.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              ImagePicker.Companion.with(PatientDetails.this)
+              ImagePicker.Companion.with(AddProfileDetails.this)
                       .crop()
                       .cropOval()
                       .compress(1024)

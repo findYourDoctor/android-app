@@ -26,9 +26,9 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".DoctorDetailActivity" />
+        <activity android:name=".doctor.DoctorDetailActivity" />
         <activity
-            android:name=".PatientDetails"
+            android:name=".dashboard.ui.dashboard.AddProfileDetails"
             android:theme="@style/AppTheme.NoActionBar"/>
 <!--    <activity-->
 <!--            android:name=".dashboard.DashboardActivity"-->

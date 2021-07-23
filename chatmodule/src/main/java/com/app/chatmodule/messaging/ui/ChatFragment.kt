@@ -2,8 +2,6 @@ package com.app.chatmodule.messaging.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -20,15 +18,15 @@ import com.app.chatmodule.R
 import com.app.chatmodule.base.BaseFragment
 import com.app.chatmodule.messaging.ChatConstant
 import com.app.chatmodule.messaging.adapter.ChatAdapter
-import com.app.chatmodule.messaging.entity.ActiveChatData
 import com.app.chatmodule.messaging.entity.ChatData
 import com.app.chatmodule.messaging.entity.SecondUserData
 import com.app.chatmodule.messaging.viewmodel.ChatViewModel
 import com.app.chatmodule.util.MyScrollToBottomObserver
 import com.app.chatmodule.util.SharedPreferenceUtil
-import com.google.firebase.database.*
-import java.util.*
-import kotlin.collections.ArrayList
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
 
 
 class ChatFragment : BaseFragment() {

@@ -17,18 +17,11 @@ import com.app.chatmodule.util.TimeUtil
 
 class ActiveChatAdapter(private val activeChatList : ArrayList<ActiveChatData>) : RecyclerView.Adapter<ActiveChatAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var textUserName : TextView
-        var textMessage : TextView
-        var txtDate : TextView
-        var imgProfile : ImageView
-        var mView : View
-        init {
-            textUserName = itemView.findViewById(R.id.textName)
-            textMessage = itemView.findViewById(R.id.textMessage)
-            txtDate = itemView.findViewById(R.id.txtTime)
-            imgProfile = itemView.findViewById(R.id.imgProfilePic)
-            mView = itemView
-        }
+        var textUserName : TextView = itemView.findViewById(R.id.textName)
+        var textMessage : TextView = itemView.findViewById(R.id.textMessage)
+        var txtDate : TextView = itemView.findViewById(R.id.txtTime)
+        var imgProfile : ImageView = itemView.findViewById(R.id.imgProfilePic)
+        var mView : View = itemView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

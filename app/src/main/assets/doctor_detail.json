@@ -1,8 +1,8 @@
 {
   "id": "userId",
   "name": "Dr Dummy",
-  "speciality": "speciality",
-  "experience": "experience",
+  "speciality": "Physician",
+  "experience": "15 years Experience",
   "profile_pic": "https://picsum.photos/200/300",
   "education": [
     {

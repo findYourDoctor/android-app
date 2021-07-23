@@ -50,6 +50,7 @@ public class DoctorListActivity extends BaseActivity {
         }
     }
 
+
     private void getDoctorList() {
 
         showProgressDialog();

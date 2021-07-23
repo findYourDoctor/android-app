@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.chatmodule.DoctorConstants;
-import com.abcd.findyourdoctor.DoctorDetailActivity;
 import com.abcd.findyourdoctor.R;
 import com.abcd.findyourdoctor.doctor.entity.DoctorData;
 import com.app.chatmodule.messaging.entity.SecondUserData;

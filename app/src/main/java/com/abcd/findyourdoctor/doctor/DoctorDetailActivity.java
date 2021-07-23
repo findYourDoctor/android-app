@@ -1,16 +1,19 @@
-package com.abcd.findyourdoctor;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.abcd.findyourdoctor.doctor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.abcd.findyourdoctor.BaseActivity;
+import com.abcd.findyourdoctor.R;
 import com.abcd.findyourdoctor.doctor.entity.DoctorData;
 import com.abcd.findyourdoctor.doctor.entity.DoctorDetailData;
+import com.abcd.findyourdoctor.doctor.entity.Education;
 import com.app.chatmodule.DoctorConstants;
 import com.app.chatmodule.messaging.entity.SecondUserData;
 import com.app.chatmodule.messaging.ui.ChatActivity;
@@ -24,10 +27,11 @@ public class DoctorDetailActivity extends BaseActivity {
     private ImageView imgProfilePic;
     private TextView txtExp;
     private TextView txtLan;
-    private ImageView imgSymbol;
+    //    private ImageView imgSymbol;
     private Button btnChat;
     private Button btnBookSlot;
     private DoctorData doctorData;
+    private LinearLayout layoutEducationContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +53,10 @@ public class DoctorDetailActivity extends BaseActivity {
         txtName = findViewById(R.id.txtName);
         imgProfilePic = findViewById(R.id.imgProfilePic);
         txtExp = findViewById(R.id.txtExp);
-        txtLan=findViewById(R.id.txtLan);
-        imgSymbol=findViewById(R.id.imgSymbol);
-        btnChat=findViewById(R.id.btnChat);
-        btnBookSlot=findViewById(R.id.btnBookSlot);
+        txtLan = findViewById(R.id.txtLan);
+        btnChat = findViewById(R.id.btnChat);
+        btnBookSlot = findViewById(R.id.btnBookSlot);
+        layoutEducationContainer = findViewById(R.id.educationContainer);
     }
 
     private void setData() {
@@ -60,6 +64,16 @@ public class DoctorDetailActivity extends BaseActivity {
         setProfileImage();
         txtExp.setText(doctorDetailData.getExperience());
         txtLan.setText(doctorDetailData.getLanguages());
+
+        for (Education education : doctorDetailData.getEducation()) {
+            View view = LayoutInflater.from(this).inflate(R.layout.education_view, null);
+            TextView txtDegree = view.findViewById(R.id.txtDegree);
+            TextView txtCollege = view.findViewById(R.id.txtCollege);
+
+            txtDegree.setText(education.getEducationName());
+            txtCollege.setText(education.getInstitute() + ", " + education.getPassingYear());
+            layoutEducationContainer.addView(view);
+        }
     }
 
     private void setProfileImage() {
