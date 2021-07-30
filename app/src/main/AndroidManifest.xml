@@ -10,21 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
 
-        <activity android:name=".slots.BookSlotActivity">
-=======
+        <activity android:name=".slots.BookSlotActivity"/>
         <activity android:name=".SplashActivity">
->>>>>>> book slot
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".messaging.doctor.DoctorChatActivity"
-            android:exported="true" />
         <activity
             android:name=".dashboard.DashboardActivity"
             android:exported="true" />
@@ -44,35 +38,6 @@
         <activity
             android:name=".dashboard.ui.dashboard.AddProfileDetails"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <!--    <activity-->
-        <!--            android:name=".dashboard.DashboardActivity"-->
-        <!--            android:label="@string/title_activity_dash_board_"-->
-        <!--            android:theme="@style/AppTheme.NoActionBar" />-->
-        <activity android:name=".SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <!--        <activity android:name=".Book_slot" />-->
-        <!--        <activity android:name=".right_row" />-->
-        <!--        <activity android:name=".DoctorDetails" />-->
-        <!--        <activity android:name=".MainActivity" />-->
-        <!--        <activity android:name=".RecyclerActivity" />-->
-        <!--        <activity android:name=".DoctorDetailActivity" />-->
-        <!--        <activity android:name=".doctor.DoctorListActivity">--><!-- <activity -->
-        <!-- android:name=".dashboard.DashboardActivity" -->
-        <!-- android:label="@string/title_activity_dash_board_" -->
-        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
-        <activity android:name=".SplashActivity"/> <!-- <activity android:name=".Book_slot" /> -->
-        <activity android:name=".slots.BookSlotActivity"/> <!-- <activity android:name=".Book_slot" /> -->
-        <!-- <activity android:name=".right_row" /> -->
-        <!-- <activity android:name=".DoctorDetails" /> -->
-        <!-- <activity android:name=".MainActivity" /> -->
-        <!-- <activity android:name=".RecyclerActivity" /> -->
-        <!-- <activity android:name=".DoctorDetailActivity" /> -->
-        <!-- <activity android:name=".doctor.DoctorListActivity"> -->
         <service
             android:name=".firebase.FirebasePushNotification"
             android:exported="false">

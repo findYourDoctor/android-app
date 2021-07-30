@@ -87,28 +87,15 @@ public class DoctorDetailActivity extends BaseActivity {
             Intent intent = new Intent(DoctorDetailActivity.this, BookSlotActivity.class);
             startActivity(intent);
         });
-<<<<<<< HEAD:app/src/main/java/com/abcd/findyourdoctor/doctor/DoctorDetailActivity.java
-        btnChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SecondUserData secondUserData = new SecondUserData();
-                secondUserData.setId(doctorData.getId());
-                secondUserData.setName(doctorData.getName());
-                secondUserData.setImageUrl("");
-                Intent intent = new Intent(DoctorDetailActivity.this, ChatActivity.class);
-                intent.putExtra(DoctorConstants.DOCTOR_DATA, secondUserData);
-                startActivity(intent);
-            }
-=======
+
         btnChat.setOnClickListener(view -> {
             SecondUserData secondUserData = new SecondUserData();
             secondUserData.setId(doctorData.getId());
             secondUserData.setName(doctorData.getName());
             secondUserData.setImageUrl("");
             Intent intent = new Intent(DoctorDetailActivity.this, ChatActivity.class);
-            intent.putExtra(DoctorConstants.Companion.getDOCTOR_DATA(), secondUserData);
+            intent.putExtra(DoctorConstants.DOCTOR_DATA, secondUserData);
             startActivity(intent);
->>>>>>> book slot:app/src/main/java/com/abcd/findyourdoctor/DoctorDetailActivity.java
         });
 
     }
