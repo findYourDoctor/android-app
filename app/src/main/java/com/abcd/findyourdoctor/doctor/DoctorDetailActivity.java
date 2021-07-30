@@ -18,6 +18,7 @@ import com.app.chatmodule.DoctorConstants;
 import com.app.chatmodule.messaging.entity.SecondUserData;
 import com.app.chatmodule.messaging.ui.ChatActivity;
 import com.abcd.findyourdoctor.serverrequest.MockRepository;
+import com.abcd.findyourdoctor.slots.BookSlotActivity;
 import com.squareup.picasso.Picasso;
 
 public class DoctorDetailActivity extends BaseActivity {
@@ -82,23 +83,19 @@ public class DoctorDetailActivity extends BaseActivity {
     }
 
     private void setOnClickListener() {
-        btnBookSlot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
+        btnBookSlot.setOnClickListener(view -> {
+            Intent intent = new Intent(DoctorDetailActivity.this, BookSlotActivity.class);
+            startActivity(intent);
         });
-        btnChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SecondUserData secondUserData = new SecondUserData();
-                secondUserData.setId(doctorData.getId());
-                secondUserData.setName(doctorData.getName());
-                secondUserData.setImageUrl("");
-                Intent intent = new Intent(DoctorDetailActivity.this, ChatActivity.class);
-                intent.putExtra(DoctorConstants.DOCTOR_DATA, secondUserData);
-                startActivity(intent);
-            }
+
+        btnChat.setOnClickListener(view -> {
+            SecondUserData secondUserData = new SecondUserData();
+            secondUserData.setId(doctorData.getId());
+            secondUserData.setName(doctorData.getName());
+            secondUserData.setImageUrl("");
+            Intent intent = new Intent(DoctorDetailActivity.this, ChatActivity.class);
+            intent.putExtra(DoctorConstants.DOCTOR_DATA, secondUserData);
+            startActivity(intent);
         });
 
     }

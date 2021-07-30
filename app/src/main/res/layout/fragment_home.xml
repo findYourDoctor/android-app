@@ -41,7 +41,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/layoutNearByDoctors"
         android:layout_width="0dp"
-        android:layout_height="235dp"
+        android:layout_height="250dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="7dp"
@@ -57,6 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
+            android:padding="5dp"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="140dp"
@@ -79,7 +80,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/layoutOnlineDoctors"
         android:layout_width="0dp"
-        android:layout_height="235dp"
+        android:layout_height="250dp"
         android:layout_marginStart="7dp"
         android:layout_marginTop="25dp"
         android:padding="10dp"
@@ -96,6 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
+            android:padding="5dp"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="140dp"
