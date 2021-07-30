@@ -1,0 +1,80 @@
+{
+  "slotList": [
+    {
+      "day": "Today",
+      "slots": [
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        }
+      ]
+    },
+    {
+      "day": "Tomorrow",
+      "slots": [
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        }
+      ]
+    },
+    {
+      "day": "1 Aug 21",
+      "slots": [
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "10:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "11:30 AM",
+          "is_available": true
+        }
+
+      ]
+    }
+  ]
+}

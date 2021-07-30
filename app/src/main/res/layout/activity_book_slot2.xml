@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context=".BookSlot">
+    android:padding="10dp"
+    tools:context=".slots.BookSlotActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="112dp"
             android:layout_height="match_parent"
-            android:src="@drawable/doc"></ImageView>
+            android:src="@drawable/doc" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:text="Dr. ABC"
                 android:textSize="18sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
 
             <TextView
                 style="bold"
@@ -51,43 +51,34 @@
 
     </LinearLayout>
 
+    <!--<View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>-->
+
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout_Date"
+        android:id="@+id/tabSlots"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-
+        app:tabMode="scrollable"
+        app:tabGravity="fill"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="23th July"
-            android:id="@+id/tabItem1"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="24th july"
-            android:id="@+id/tabItem2"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="25th july"
-            android:id="@+id/tabItem3"/>
-    </com.google.android.material.tabs.TabLayout>
     <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerSlots"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/Viewpagersitem">
-
-    </androidx.viewpager.widget.ViewPager>
-
-
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabSlots" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
