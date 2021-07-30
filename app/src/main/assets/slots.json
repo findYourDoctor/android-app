@@ -75,6 +75,48 @@
         }
 
       ]
+    },
+    {
+      "day": "2 Aug 21",
+      "slots": [
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        }
+      ]
+    },
+    {
+      "day": "3 Aug 21",
+      "slots": [
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        },
+        {
+          "slot_time": "9:30 AM",
+          "is_available": true
+        }
+      ]
     }
   ]
 }

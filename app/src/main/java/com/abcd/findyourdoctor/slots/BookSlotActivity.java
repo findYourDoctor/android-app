@@ -6,12 +6,13 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.abcd.findyourdoctor.BaseActivity;
 import com.abcd.findyourdoctor.R;
 import com.abcd.findyourdoctor.serverrequest.MockRepository;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
-public class BookSlotActivity extends AppCompatActivity {
+public class BookSlotActivity extends BaseActivity {
 
     TabLayout tabLayout;
     TabItem tabItem1, tabItem2, tabItem3;
@@ -54,6 +55,6 @@ public class BookSlotActivity extends AppCompatActivity {
 //            }
 //        });
         //listen for scroll or pg chng
-           viewPager.addOnPageChangeListener(new  TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+//           viewPager.addOnPageChangeListener(new  TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 }
