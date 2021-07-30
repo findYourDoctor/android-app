@@ -57,7 +57,7 @@
         <item>O+</item>
         <item>O-</item>
     </string-array>
-    <string name="Martial_status" />
+    <string name="Martial_status"/>
     <string-array name="Martial_status">
         <item>Married</item>
         <item>Unmarried</item>
